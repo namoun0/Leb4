@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "arm_math.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +46,12 @@ TIM_HandleTypeDef htim5;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+uint32_t QEIReadRaw;
+arm_pid_instance_f32 PID = {0};
+float position = 0;
+float setposition = 0;
+float pwmfirst = 0 ;
+uint32_t duty = 1000; //counter 999
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -78,7 +83,6 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -98,6 +102,13 @@ int main(void)
   MX_TIM5_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
+  PID.Kp = 0.1;
+  PID.Ki = 0.00001;
+  PID.Kd = 0.1;
+  arm_pid_init_f32(&PID,0);
+  HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_1|TIM_CHANNEL_2);
+  HAL_TIM_Base_Start(&htim1); //
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1|TIM_CHANNEL_2);
 
   /* USER CODE END 2 */
 
@@ -108,6 +119,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  static uint32_t timestamp = 0;
+	  if (timestamp <= HAL_GetTick() )
+	  {
+		  timestamp = HAL_GetTick()+1;
+
+//		  pwmfirst = arm_pid_f32 (&PID, setposition-position);
+		  QEIReadRaw = __HAL_TIM_GET_COUNTER(&htim2);
+		  setposition = QEIReadRaw*360/3072.0;
+		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1,duty);
+		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2,0);
+
+	  }
+
   }
   /* USER CODE END 3 */
 }
