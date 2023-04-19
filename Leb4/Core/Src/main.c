@@ -160,6 +160,11 @@ int main(void)
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,pwmfirst*-1);
 			  p = 2;
 		  }
+		  else if (setposition-position <= 4.5)
+		  {
+			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3,0);
+			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,0);
+		  }
 		  else if ((position) == (setposition-2))
 		  {
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3,0);
