@@ -110,7 +110,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   PID.Kp = 10;
   PID.Ki = 0.0000001;
-  PID.Kd = 20;
+  PID.Kd = 1;
   arm_pid_init_f32(&PID,0);
   HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_1|TIM_CHANNEL_2);
   HAL_TIM_Base_Start(&htim1); //
@@ -160,7 +160,7 @@ int main(void)
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,pwmfirst*-1);
 			  p = 2;
 		  }
-		  else if (setposition-position <= 4.5)
+		  else if (position+2 == 36000)
 		  {
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3,0);
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,0);

@@ -1076,287 +1076,286 @@ int main(void)
  8000d44:	4b82      	ldr	r3, [pc, #520]	; (8000f50 <main+0x238>)
  8000d46:	4a84      	ldr	r2, [pc, #528]	; (8000f58 <main+0x240>)
  8000d48:	61da      	str	r2, [r3, #28]
-  PID.Kd = 20;
+  PID.Kd = 1;
  8000d4a:	4b81      	ldr	r3, [pc, #516]	; (8000f50 <main+0x238>)
- 8000d4c:	4a83      	ldr	r2, [pc, #524]	; (8000f5c <main+0x244>)
- 8000d4e:	621a      	str	r2, [r3, #32]
+ 8000d4c:	f04f 527e 	mov.w	r2, #1065353216	; 0x3f800000
+ 8000d50:	621a      	str	r2, [r3, #32]
   arm_pid_init_f32(&PID,0);
- 8000d50:	2100      	movs	r1, #0
- 8000d52:	487f      	ldr	r0, [pc, #508]	; (8000f50 <main+0x238>)
- 8000d54:	f003 f9b6 	bl	80040c4 <arm_pid_init_f32>
+ 8000d52:	2100      	movs	r1, #0
+ 8000d54:	487e      	ldr	r0, [pc, #504]	; (8000f50 <main+0x238>)
+ 8000d56:	f003 f9b5 	bl	80040c4 <arm_pid_init_f32>
   HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_1|TIM_CHANNEL_2);
- 8000d58:	2104      	movs	r1, #4
- 8000d5a:	4881      	ldr	r0, [pc, #516]	; (8000f60 <main+0x248>)
- 8000d5c:	f001 fffe 	bl	8002d5c <HAL_TIM_Encoder_Start>
+ 8000d5a:	2104      	movs	r1, #4
+ 8000d5c:	487f      	ldr	r0, [pc, #508]	; (8000f5c <main+0x244>)
+ 8000d5e:	f001 fffd 	bl	8002d5c <HAL_TIM_Encoder_Start>
   HAL_TIM_Base_Start(&htim1); //
- 8000d60:	4880      	ldr	r0, [pc, #512]	; (8000f64 <main+0x24c>)
- 8000d62:	f001 fdf1 	bl	8002948 <HAL_TIM_Base_Start>
+ 8000d62:	487f      	ldr	r0, [pc, #508]	; (8000f60 <main+0x248>)
+ 8000d64:	f001 fdf0 	bl	8002948 <HAL_TIM_Base_Start>
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
- 8000d66:	2108      	movs	r1, #8
- 8000d68:	487e      	ldr	r0, [pc, #504]	; (8000f64 <main+0x24c>)
- 8000d6a:	f001 fea1 	bl	8002ab0 <HAL_TIM_PWM_Start>
+ 8000d68:	2108      	movs	r1, #8
+ 8000d6a:	487d      	ldr	r0, [pc, #500]	; (8000f60 <main+0x248>)
+ 8000d6c:	f001 fea0 	bl	8002ab0 <HAL_TIM_PWM_Start>
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
- 8000d6e:	210c      	movs	r1, #12
- 8000d70:	487c      	ldr	r0, [pc, #496]	; (8000f64 <main+0x24c>)
- 8000d72:	f001 fe9d 	bl	8002ab0 <HAL_TIM_PWM_Start>
+ 8000d70:	210c      	movs	r1, #12
+ 8000d72:	487b      	ldr	r0, [pc, #492]	; (8000f60 <main+0x248>)
+ 8000d74:	f001 fe9c 	bl	8002ab0 <HAL_TIM_PWM_Start>
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 	  static uint32_t timestamp = 0;
 	  if (timestamp <= HAL_GetTick() )
- 8000d76:	f000 fe43 	bl	8001a00 <HAL_GetTick>
- 8000d7a:	4602      	mov	r2, r0
- 8000d7c:	4b7a      	ldr	r3, [pc, #488]	; (8000f68 <main+0x250>)
- 8000d7e:	681b      	ldr	r3, [r3, #0]
- 8000d80:	429a      	cmp	r2, r3
- 8000d82:	d3f8      	bcc.n	8000d76 <main+0x5e>
+ 8000d78:	f000 fe42 	bl	8001a00 <HAL_GetTick>
+ 8000d7c:	4602      	mov	r2, r0
+ 8000d7e:	4b79      	ldr	r3, [pc, #484]	; (8000f64 <main+0x24c>)
+ 8000d80:	681b      	ldr	r3, [r3, #0]
+ 8000d82:	429a      	cmp	r2, r3
+ 8000d84:	d3f8      	bcc.n	8000d78 <main+0x60>
 	  {
 		  timestamp = HAL_GetTick()+10;
- 8000d84:	f000 fe3c 	bl	8001a00 <HAL_GetTick>
- 8000d88:	4603      	mov	r3, r0
- 8000d8a:	330a      	adds	r3, #10
- 8000d8c:	4a76      	ldr	r2, [pc, #472]	; (8000f68 <main+0x250>)
- 8000d8e:	6013      	str	r3, [r2, #0]
+ 8000d86:	f000 fe3b 	bl	8001a00 <HAL_GetTick>
+ 8000d8a:	4603      	mov	r3, r0
+ 8000d8c:	330a      	adds	r3, #10
+ 8000d8e:	4a75      	ldr	r2, [pc, #468]	; (8000f64 <main+0x24c>)
+ 8000d90:	6013      	str	r3, [r2, #0]
 
 		  QEIReadRaw = __HAL_TIM_GET_COUNTER(&htim2);
- 8000d90:	4b73      	ldr	r3, [pc, #460]	; (8000f60 <main+0x248>)
- 8000d92:	681b      	ldr	r3, [r3, #0]
- 8000d94:	6a5b      	ldr	r3, [r3, #36]	; 0x24
- 8000d96:	4a75      	ldr	r2, [pc, #468]	; (8000f6c <main+0x254>)
- 8000d98:	6013      	str	r3, [r2, #0]
+ 8000d92:	4b72      	ldr	r3, [pc, #456]	; (8000f5c <main+0x244>)
+ 8000d94:	681b      	ldr	r3, [r3, #0]
+ 8000d96:	6a5b      	ldr	r3, [r3, #36]	; 0x24
+ 8000d98:	4a73      	ldr	r2, [pc, #460]	; (8000f68 <main+0x250>)
+ 8000d9a:	6013      	str	r3, [r2, #0]
 		  position = QEIReadRaw*360/3072.0;
- 8000d9a:	4b74      	ldr	r3, [pc, #464]	; (8000f6c <main+0x254>)
- 8000d9c:	681b      	ldr	r3, [r3, #0]
- 8000d9e:	f44f 72b4 	mov.w	r2, #360	; 0x168
- 8000da2:	fb02 f303 	mul.w	r3, r2, r3
- 8000da6:	4618      	mov	r0, r3
- 8000da8:	f7ff fb58 	bl	800045c <__aeabi_ui2d>
- 8000dac:	f04f 0200 	mov.w	r2, #0
- 8000db0:	4b6f      	ldr	r3, [pc, #444]	; (8000f70 <main+0x258>)
- 8000db2:	f7ff fcf7 	bl	80007a4 <__aeabi_ddiv>
- 8000db6:	4602      	mov	r2, r0
- 8000db8:	460b      	mov	r3, r1
- 8000dba:	4610      	mov	r0, r2
- 8000dbc:	4619      	mov	r1, r3
- 8000dbe:	f7ff fdd9 	bl	8000974 <__aeabi_d2f>
- 8000dc2:	4603      	mov	r3, r0
- 8000dc4:	4a6b      	ldr	r2, [pc, #428]	; (8000f74 <main+0x25c>)
- 8000dc6:	6013      	str	r3, [r2, #0]
+ 8000d9c:	4b72      	ldr	r3, [pc, #456]	; (8000f68 <main+0x250>)
+ 8000d9e:	681b      	ldr	r3, [r3, #0]
+ 8000da0:	f44f 72b4 	mov.w	r2, #360	; 0x168
+ 8000da4:	fb02 f303 	mul.w	r3, r2, r3
+ 8000da8:	4618      	mov	r0, r3
+ 8000daa:	f7ff fb57 	bl	800045c <__aeabi_ui2d>
+ 8000dae:	f04f 0200 	mov.w	r2, #0
+ 8000db2:	4b6e      	ldr	r3, [pc, #440]	; (8000f6c <main+0x254>)
+ 8000db4:	f7ff fcf6 	bl	80007a4 <__aeabi_ddiv>
+ 8000db8:	4602      	mov	r2, r0
+ 8000dba:	460b      	mov	r3, r1
+ 8000dbc:	4610      	mov	r0, r2
+ 8000dbe:	4619      	mov	r1, r3
+ 8000dc0:	f7ff fdd8 	bl	8000974 <__aeabi_d2f>
+ 8000dc4:	4603      	mov	r3, r0
+ 8000dc6:	4a6a      	ldr	r2, [pc, #424]	; (8000f70 <main+0x258>)
+ 8000dc8:	6013      	str	r3, [r2, #0]
 
 		  pwmfirst = arm_pid_f32 (&PID, setposition-position);
- 8000dc8:	4b6b      	ldr	r3, [pc, #428]	; (8000f78 <main+0x260>)
- 8000dca:	ed93 7a00 	vldr	s14, [r3]
- 8000dce:	4b69      	ldr	r3, [pc, #420]	; (8000f74 <main+0x25c>)
- 8000dd0:	edd3 7a00 	vldr	s15, [r3]
- 8000dd4:	ee77 7a67 	vsub.f32	s15, s14, s15
- 8000dd8:	4b5d      	ldr	r3, [pc, #372]	; (8000f50 <main+0x238>)
- 8000dda:	60fb      	str	r3, [r7, #12]
- 8000ddc:	edc7 7a02 	vstr	s15, [r7, #8]
+ 8000dca:	4b6a      	ldr	r3, [pc, #424]	; (8000f74 <main+0x25c>)
+ 8000dcc:	ed93 7a00 	vldr	s14, [r3]
+ 8000dd0:	4b67      	ldr	r3, [pc, #412]	; (8000f70 <main+0x258>)
+ 8000dd2:	edd3 7a00 	vldr	s15, [r3]
+ 8000dd6:	ee77 7a67 	vsub.f32	s15, s14, s15
+ 8000dda:	4b5d      	ldr	r3, [pc, #372]	; (8000f50 <main+0x238>)
+ 8000ddc:	60fb      	str	r3, [r7, #12]
+ 8000dde:	edc7 7a02 	vstr	s15, [r7, #8]
   float32_t in)
   {
     float32_t out;
 
     /* y[n] = y[n-1] + A0 * x[n] + A1 * x[n-1] + A2 * x[n-2]  */
     out = (S->A0 * in) +
- 8000de0:	68fb      	ldr	r3, [r7, #12]
- 8000de2:	ed93 7a00 	vldr	s14, [r3]
- 8000de6:	edd7 7a02 	vldr	s15, [r7, #8]
- 8000dea:	ee27 7a27 	vmul.f32	s14, s14, s15
+ 8000de2:	68fb      	ldr	r3, [r7, #12]
+ 8000de4:	ed93 7a00 	vldr	s14, [r3]
+ 8000de8:	edd7 7a02 	vldr	s15, [r7, #8]
+ 8000dec:	ee27 7a27 	vmul.f32	s14, s14, s15
       (S->A1 * S->state[0]) + (S->A2 * S->state[1]) + (S->state[2]);
- 8000dee:	68fb      	ldr	r3, [r7, #12]
- 8000df0:	edd3 6a01 	vldr	s13, [r3, #4]
- 8000df4:	68fb      	ldr	r3, [r7, #12]
- 8000df6:	edd3 7a03 	vldr	s15, [r3, #12]
- 8000dfa:	ee66 7aa7 	vmul.f32	s15, s13, s15
+ 8000df0:	68fb      	ldr	r3, [r7, #12]
+ 8000df2:	edd3 6a01 	vldr	s13, [r3, #4]
+ 8000df6:	68fb      	ldr	r3, [r7, #12]
+ 8000df8:	edd3 7a03 	vldr	s15, [r3, #12]
+ 8000dfc:	ee66 7aa7 	vmul.f32	s15, s13, s15
     out = (S->A0 * in) +
- 8000dfe:	ee37 7a27 	vadd.f32	s14, s14, s15
+ 8000e00:	ee37 7a27 	vadd.f32	s14, s14, s15
       (S->A1 * S->state[0]) + (S->A2 * S->state[1]) + (S->state[2]);
- 8000e02:	68fb      	ldr	r3, [r7, #12]
- 8000e04:	edd3 6a02 	vldr	s13, [r3, #8]
- 8000e08:	68fb      	ldr	r3, [r7, #12]
- 8000e0a:	edd3 7a04 	vldr	s15, [r3, #16]
- 8000e0e:	ee66 7aa7 	vmul.f32	s15, s13, s15
- 8000e12:	ee37 7a27 	vadd.f32	s14, s14, s15
- 8000e16:	68fb      	ldr	r3, [r7, #12]
- 8000e18:	edd3 7a05 	vldr	s15, [r3, #20]
+ 8000e04:	68fb      	ldr	r3, [r7, #12]
+ 8000e06:	edd3 6a02 	vldr	s13, [r3, #8]
+ 8000e0a:	68fb      	ldr	r3, [r7, #12]
+ 8000e0c:	edd3 7a04 	vldr	s15, [r3, #16]
+ 8000e10:	ee66 7aa7 	vmul.f32	s15, s13, s15
+ 8000e14:	ee37 7a27 	vadd.f32	s14, s14, s15
+ 8000e18:	68fb      	ldr	r3, [r7, #12]
+ 8000e1a:	edd3 7a05 	vldr	s15, [r3, #20]
     out = (S->A0 * in) +
- 8000e1c:	ee77 7a27 	vadd.f32	s15, s14, s15
- 8000e20:	edc7 7a01 	vstr	s15, [r7, #4]
+ 8000e1e:	ee77 7a27 	vadd.f32	s15, s14, s15
+ 8000e22:	edc7 7a01 	vstr	s15, [r7, #4]
 
     /* Update state */
     S->state[1] = S->state[0];
- 8000e24:	68fb      	ldr	r3, [r7, #12]
- 8000e26:	68da      	ldr	r2, [r3, #12]
- 8000e28:	68fb      	ldr	r3, [r7, #12]
- 8000e2a:	611a      	str	r2, [r3, #16]
+ 8000e26:	68fb      	ldr	r3, [r7, #12]
+ 8000e28:	68da      	ldr	r2, [r3, #12]
+ 8000e2a:	68fb      	ldr	r3, [r7, #12]
+ 8000e2c:	611a      	str	r2, [r3, #16]
     S->state[0] = in;
- 8000e2c:	68fb      	ldr	r3, [r7, #12]
- 8000e2e:	68ba      	ldr	r2, [r7, #8]
- 8000e30:	60da      	str	r2, [r3, #12]
+ 8000e2e:	68fb      	ldr	r3, [r7, #12]
+ 8000e30:	68ba      	ldr	r2, [r7, #8]
+ 8000e32:	60da      	str	r2, [r3, #12]
     S->state[2] = out;
- 8000e32:	68fb      	ldr	r3, [r7, #12]
- 8000e34:	687a      	ldr	r2, [r7, #4]
- 8000e36:	615a      	str	r2, [r3, #20]
+ 8000e34:	68fb      	ldr	r3, [r7, #12]
+ 8000e36:	687a      	ldr	r2, [r7, #4]
+ 8000e38:	615a      	str	r2, [r3, #20]
 
     /* return to application */
     return (out);
- 8000e38:	687b      	ldr	r3, [r7, #4]
- 8000e3a:	4a50      	ldr	r2, [pc, #320]	; (8000f7c <main+0x264>)
- 8000e3c:	6013      	str	r3, [r2, #0]
+ 8000e3a:	687b      	ldr	r3, [r7, #4]
+ 8000e3c:	4a4e      	ldr	r2, [pc, #312]	; (8000f78 <main+0x260>)
+ 8000e3e:	6013      	str	r3, [r2, #0]
 //		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3, pwmfirst);
 //		  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,0);
 
 
 		  if (pwmfirst>=999)
- 8000e3e:	4b4f      	ldr	r3, [pc, #316]	; (8000f7c <main+0x264>)
- 8000e40:	edd3 7a00 	vldr	s15, [r3]
- 8000e44:	ed9f 7a4e 	vldr	s14, [pc, #312]	; 8000f80 <main+0x268>
- 8000e48:	eef4 7ac7 	vcmpe.f32	s15, s14
- 8000e4c:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8000e50:	db03      	blt.n	8000e5a <main+0x142>
+ 8000e40:	4b4d      	ldr	r3, [pc, #308]	; (8000f78 <main+0x260>)
+ 8000e42:	edd3 7a00 	vldr	s15, [r3]
+ 8000e46:	ed9f 7a4d 	vldr	s14, [pc, #308]	; 8000f7c <main+0x264>
+ 8000e4a:	eef4 7ac7 	vcmpe.f32	s15, s14
+ 8000e4e:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 8000e52:	db03      	blt.n	8000e5c <main+0x144>
 		  {
 			  pwmfirst = 1000;
- 8000e52:	4b4a      	ldr	r3, [pc, #296]	; (8000f7c <main+0x264>)
- 8000e54:	4a4b      	ldr	r2, [pc, #300]	; (8000f84 <main+0x26c>)
- 8000e56:	601a      	str	r2, [r3, #0]
- 8000e58:	e00c      	b.n	8000e74 <main+0x15c>
+ 8000e54:	4b48      	ldr	r3, [pc, #288]	; (8000f78 <main+0x260>)
+ 8000e56:	4a4a      	ldr	r2, [pc, #296]	; (8000f80 <main+0x268>)
+ 8000e58:	601a      	str	r2, [r3, #0]
+ 8000e5a:	e00c      	b.n	8000e76 <main+0x15e>
 		  }
 		  else if (pwmfirst<=-999)
- 8000e5a:	4b48      	ldr	r3, [pc, #288]	; (8000f7c <main+0x264>)
- 8000e5c:	edd3 7a00 	vldr	s15, [r3]
- 8000e60:	ed9f 7a49 	vldr	s14, [pc, #292]	; 8000f88 <main+0x270>
- 8000e64:	eef4 7ac7 	vcmpe.f32	s15, s14
- 8000e68:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8000e6c:	d802      	bhi.n	8000e74 <main+0x15c>
+ 8000e5c:	4b46      	ldr	r3, [pc, #280]	; (8000f78 <main+0x260>)
+ 8000e5e:	edd3 7a00 	vldr	s15, [r3]
+ 8000e62:	ed9f 7a48 	vldr	s14, [pc, #288]	; 8000f84 <main+0x26c>
+ 8000e66:	eef4 7ac7 	vcmpe.f32	s15, s14
+ 8000e6a:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 8000e6e:	d802      	bhi.n	8000e76 <main+0x15e>
 		  {
 			  pwmfirst  = -1000;
- 8000e6e:	4b43      	ldr	r3, [pc, #268]	; (8000f7c <main+0x264>)
- 8000e70:	4a46      	ldr	r2, [pc, #280]	; (8000f8c <main+0x274>)
- 8000e72:	601a      	str	r2, [r3, #0]
+ 8000e70:	4b41      	ldr	r3, [pc, #260]	; (8000f78 <main+0x260>)
+ 8000e72:	4a45      	ldr	r2, [pc, #276]	; (8000f88 <main+0x270>)
+ 8000e74:	601a      	str	r2, [r3, #0]
 		  }
 		  if (position < setposition)
- 8000e74:	4b3f      	ldr	r3, [pc, #252]	; (8000f74 <main+0x25c>)
- 8000e76:	ed93 7a00 	vldr	s14, [r3]
- 8000e7a:	4b3f      	ldr	r3, [pc, #252]	; (8000f78 <main+0x260>)
- 8000e7c:	edd3 7a00 	vldr	s15, [r3]
- 8000e80:	eeb4 7ae7 	vcmpe.f32	s14, s15
- 8000e84:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8000e88:	d511      	bpl.n	8000eae <main+0x196>
+ 8000e76:	4b3e      	ldr	r3, [pc, #248]	; (8000f70 <main+0x258>)
+ 8000e78:	ed93 7a00 	vldr	s14, [r3]
+ 8000e7c:	4b3d      	ldr	r3, [pc, #244]	; (8000f74 <main+0x25c>)
+ 8000e7e:	edd3 7a00 	vldr	s15, [r3]
+ 8000e82:	eeb4 7ae7 	vcmpe.f32	s14, s15
+ 8000e86:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 8000e8a:	d511      	bpl.n	8000eb0 <main+0x198>
 		  {
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3,pwmfirst);
- 8000e8a:	4b3c      	ldr	r3, [pc, #240]	; (8000f7c <main+0x264>)
- 8000e8c:	edd3 7a00 	vldr	s15, [r3]
- 8000e90:	4b34      	ldr	r3, [pc, #208]	; (8000f64 <main+0x24c>)
- 8000e92:	681b      	ldr	r3, [r3, #0]
- 8000e94:	eefc 7ae7 	vcvt.u32.f32	s15, s15
- 8000e98:	ee17 2a90 	vmov	r2, s15
- 8000e9c:	63da      	str	r2, [r3, #60]	; 0x3c
+ 8000e8c:	4b3a      	ldr	r3, [pc, #232]	; (8000f78 <main+0x260>)
+ 8000e8e:	edd3 7a00 	vldr	s15, [r3]
+ 8000e92:	4b33      	ldr	r3, [pc, #204]	; (8000f60 <main+0x248>)
+ 8000e94:	681b      	ldr	r3, [r3, #0]
+ 8000e96:	eefc 7ae7 	vcvt.u32.f32	s15, s15
+ 8000e9a:	ee17 2a90 	vmov	r2, s15
+ 8000e9e:	63da      	str	r2, [r3, #60]	; 0x3c
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,0);
- 8000e9e:	4b31      	ldr	r3, [pc, #196]	; (8000f64 <main+0x24c>)
- 8000ea0:	681b      	ldr	r3, [r3, #0]
- 8000ea2:	2200      	movs	r2, #0
- 8000ea4:	641a      	str	r2, [r3, #64]	; 0x40
+ 8000ea0:	4b2f      	ldr	r3, [pc, #188]	; (8000f60 <main+0x248>)
+ 8000ea2:	681b      	ldr	r3, [r3, #0]
+ 8000ea4:	2200      	movs	r2, #0
+ 8000ea6:	641a      	str	r2, [r3, #64]	; 0x40
 			  p = 1;
- 8000ea6:	4b3a      	ldr	r3, [pc, #232]	; (8000f90 <main+0x278>)
- 8000ea8:	2201      	movs	r2, #1
- 8000eaa:	801a      	strh	r2, [r3, #0]
- 8000eac:	e763      	b.n	8000d76 <main+0x5e>
+ 8000ea8:	4b38      	ldr	r3, [pc, #224]	; (8000f8c <main+0x274>)
+ 8000eaa:	2201      	movs	r2, #1
+ 8000eac:	801a      	strh	r2, [r3, #0]
+ 8000eae:	e763      	b.n	8000d78 <main+0x60>
 		  }
 		  else if (position > setposition)
- 8000eae:	4b31      	ldr	r3, [pc, #196]	; (8000f74 <main+0x25c>)
- 8000eb0:	ed93 7a00 	vldr	s14, [r3]
- 8000eb4:	4b30      	ldr	r3, [pc, #192]	; (8000f78 <main+0x260>)
- 8000eb6:	edd3 7a00 	vldr	s15, [r3]
- 8000eba:	eeb4 7ae7 	vcmpe.f32	s14, s15
- 8000ebe:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8000ec2:	dd13      	ble.n	8000eec <main+0x1d4>
+ 8000eb0:	4b2f      	ldr	r3, [pc, #188]	; (8000f70 <main+0x258>)
+ 8000eb2:	ed93 7a00 	vldr	s14, [r3]
+ 8000eb6:	4b2f      	ldr	r3, [pc, #188]	; (8000f74 <main+0x25c>)
+ 8000eb8:	edd3 7a00 	vldr	s15, [r3]
+ 8000ebc:	eeb4 7ae7 	vcmpe.f32	s14, s15
+ 8000ec0:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
+ 8000ec4:	dd13      	ble.n	8000eee <main+0x1d6>
 		  {
 
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3,0);
- 8000ec4:	4b27      	ldr	r3, [pc, #156]	; (8000f64 <main+0x24c>)
- 8000ec6:	681b      	ldr	r3, [r3, #0]
- 8000ec8:	2200      	movs	r2, #0
- 8000eca:	63da      	str	r2, [r3, #60]	; 0x3c
+ 8000ec6:	4b26      	ldr	r3, [pc, #152]	; (8000f60 <main+0x248>)
+ 8000ec8:	681b      	ldr	r3, [r3, #0]
+ 8000eca:	2200      	movs	r2, #0
+ 8000ecc:	63da      	str	r2, [r3, #60]	; 0x3c
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,pwmfirst*-1);
- 8000ecc:	4b2b      	ldr	r3, [pc, #172]	; (8000f7c <main+0x264>)
- 8000ece:	edd3 7a00 	vldr	s15, [r3]
- 8000ed2:	eef1 7a67 	vneg.f32	s15, s15
- 8000ed6:	4b23      	ldr	r3, [pc, #140]	; (8000f64 <main+0x24c>)
- 8000ed8:	681b      	ldr	r3, [r3, #0]
- 8000eda:	eefc 7ae7 	vcvt.u32.f32	s15, s15
- 8000ede:	ee17 2a90 	vmov	r2, s15
- 8000ee2:	641a      	str	r2, [r3, #64]	; 0x40
+ 8000ece:	4b2a      	ldr	r3, [pc, #168]	; (8000f78 <main+0x260>)
+ 8000ed0:	edd3 7a00 	vldr	s15, [r3]
+ 8000ed4:	eef1 7a67 	vneg.f32	s15, s15
+ 8000ed8:	4b21      	ldr	r3, [pc, #132]	; (8000f60 <main+0x248>)
+ 8000eda:	681b      	ldr	r3, [r3, #0]
+ 8000edc:	eefc 7ae7 	vcvt.u32.f32	s15, s15
+ 8000ee0:	ee17 2a90 	vmov	r2, s15
+ 8000ee4:	641a      	str	r2, [r3, #64]	; 0x40
 			  p = 2;
- 8000ee4:	4b2a      	ldr	r3, [pc, #168]	; (8000f90 <main+0x278>)
- 8000ee6:	2202      	movs	r2, #2
- 8000ee8:	801a      	strh	r2, [r3, #0]
- 8000eea:	e744      	b.n	8000d76 <main+0x5e>
+ 8000ee6:	4b29      	ldr	r3, [pc, #164]	; (8000f8c <main+0x274>)
+ 8000ee8:	2202      	movs	r2, #2
+ 8000eea:	801a      	strh	r2, [r3, #0]
+ 8000eec:	e744      	b.n	8000d78 <main+0x60>
 		  }
-		  else if (setposition-position <= 4.5)
- 8000eec:	4b22      	ldr	r3, [pc, #136]	; (8000f78 <main+0x260>)
- 8000eee:	ed93 7a00 	vldr	s14, [r3]
- 8000ef2:	4b20      	ldr	r3, [pc, #128]	; (8000f74 <main+0x25c>)
- 8000ef4:	edd3 7a00 	vldr	s15, [r3]
- 8000ef8:	ee77 7a67 	vsub.f32	s15, s14, s15
- 8000efc:	eeb1 7a02 	vmov.f32	s14, #18	; 0x40900000  4.5
- 8000f00:	eef4 7ac7 	vcmpe.f32	s15, s14
+		  else if (position+2 == 36000)
+ 8000eee:	4b20      	ldr	r3, [pc, #128]	; (8000f70 <main+0x258>)
+ 8000ef0:	edd3 7a00 	vldr	s15, [r3]
+ 8000ef4:	eeb0 7a00 	vmov.f32	s14, #0	; 0x40000000  2.0
+ 8000ef8:	ee77 7a87 	vadd.f32	s15, s15, s14
+ 8000efc:	ed9f 7a24 	vldr	s14, [pc, #144]	; 8000f90 <main+0x278>
+ 8000f00:	eef4 7a47 	vcmp.f32	s15, s14
  8000f04:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8000f08:	d808      	bhi.n	8000f1c <main+0x204>
+ 8000f08:	d108      	bne.n	8000f1c <main+0x204>
 		  {
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3,0);
- 8000f0a:	4b16      	ldr	r3, [pc, #88]	; (8000f64 <main+0x24c>)
+ 8000f0a:	4b15      	ldr	r3, [pc, #84]	; (8000f60 <main+0x248>)
  8000f0c:	681b      	ldr	r3, [r3, #0]
  8000f0e:	2200      	movs	r2, #0
  8000f10:	63da      	str	r2, [r3, #60]	; 0x3c
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,0);
- 8000f12:	4b14      	ldr	r3, [pc, #80]	; (8000f64 <main+0x24c>)
+ 8000f12:	4b13      	ldr	r3, [pc, #76]	; (8000f60 <main+0x248>)
  8000f14:	681b      	ldr	r3, [r3, #0]
  8000f16:	2200      	movs	r2, #0
  8000f18:	641a      	str	r2, [r3, #64]	; 0x40
- 8000f1a:	e72c      	b.n	8000d76 <main+0x5e>
+ 8000f1a:	e72d      	b.n	8000d78 <main+0x60>
 		  }
 		  else if ((position) == (setposition-2))
- 8000f1c:	4b16      	ldr	r3, [pc, #88]	; (8000f78 <main+0x260>)
+ 8000f1c:	4b15      	ldr	r3, [pc, #84]	; (8000f74 <main+0x25c>)
  8000f1e:	edd3 7a00 	vldr	s15, [r3]
  8000f22:	eeb0 7a00 	vmov.f32	s14, #0	; 0x40000000  2.0
  8000f26:	ee37 7ac7 	vsub.f32	s14, s15, s14
- 8000f2a:	4b12      	ldr	r3, [pc, #72]	; (8000f74 <main+0x25c>)
+ 8000f2a:	4b11      	ldr	r3, [pc, #68]	; (8000f70 <main+0x258>)
  8000f2c:	edd3 7a00 	vldr	s15, [r3]
  8000f30:	eeb4 7a67 	vcmp.f32	s14, s15
  8000f34:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
- 8000f38:	f47f af1d 	bne.w	8000d76 <main+0x5e>
+ 8000f38:	f47f af1e 	bne.w	8000d78 <main+0x60>
 		  {
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_3,0);
- 8000f3c:	4b09      	ldr	r3, [pc, #36]	; (8000f64 <main+0x24c>)
+ 8000f3c:	4b08      	ldr	r3, [pc, #32]	; (8000f60 <main+0x248>)
  8000f3e:	681b      	ldr	r3, [r3, #0]
  8000f40:	2200      	movs	r2, #0
  8000f42:	63da      	str	r2, [r3, #60]	; 0x3c
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_4,0);
- 8000f44:	4b07      	ldr	r3, [pc, #28]	; (8000f64 <main+0x24c>)
+ 8000f44:	4b06      	ldr	r3, [pc, #24]	; (8000f60 <main+0x248>)
  8000f46:	681b      	ldr	r3, [r3, #0]
  8000f48:	2200      	movs	r2, #0
  8000f4a:	641a      	str	r2, [r3, #64]	; 0x40
   {
- 8000f4c:	e713      	b.n	8000d76 <main+0x5e>
+ 8000f4c:	e714      	b.n	8000d78 <main+0x60>
  8000f4e:	bf00      	nop
  8000f50:	20000190 	.word	0x20000190
  8000f54:	41200000 	.word	0x41200000
  8000f58:	33d6bf95 	.word	0x33d6bf95
- 8000f5c:	41a00000 	.word	0x41a00000
- 8000f60:	20000070 	.word	0x20000070
- 8000f64:	20000028 	.word	0x20000028
- 8000f68:	200001c4 	.word	0x200001c4
- 8000f6c:	2000018c 	.word	0x2000018c
- 8000f70:	40a80000 	.word	0x40a80000
- 8000f74:	200001b4 	.word	0x200001b4
- 8000f78:	200001b8 	.word	0x200001b8
- 8000f7c:	200001bc 	.word	0x200001bc
- 8000f80:	4479c000 	.word	0x4479c000
- 8000f84:	447a0000 	.word	0x447a0000
- 8000f88:	c479c000 	.word	0xc479c000
- 8000f8c:	c47a0000 	.word	0xc47a0000
- 8000f90:	200001c0 	.word	0x200001c0
+ 8000f5c:	20000070 	.word	0x20000070
+ 8000f60:	20000028 	.word	0x20000028
+ 8000f64:	200001c4 	.word	0x200001c4
+ 8000f68:	2000018c 	.word	0x2000018c
+ 8000f6c:	40a80000 	.word	0x40a80000
+ 8000f70:	200001b4 	.word	0x200001b4
+ 8000f74:	200001b8 	.word	0x200001b8
+ 8000f78:	200001bc 	.word	0x200001bc
+ 8000f7c:	4479c000 	.word	0x4479c000
+ 8000f80:	447a0000 	.word	0x447a0000
+ 8000f84:	c479c000 	.word	0xc479c000
+ 8000f88:	c47a0000 	.word	0xc47a0000
+ 8000f8c:	200001c0 	.word	0x200001c0
+ 8000f90:	470ca000 	.word	0x470ca000
 
 08000f94 <SystemClock_Config>:
 /**
